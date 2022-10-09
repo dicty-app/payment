@@ -1,0 +1,22 @@
+{
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "printWidth": 140,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": [
+        ",*.java"
+      ],
+      "options": {
+        "printWidth": 140,
+        "tabWidth": 4,
+        "useTabs": false,
+        "trailingComma": "none"
+      }
+    }
+  ]
+}
+
