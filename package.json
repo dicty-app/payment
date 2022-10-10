@@ -1,6 +1,6 @@
 {
   "name": "@dicty/stripe",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Dicty Stripe plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
