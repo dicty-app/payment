@@ -1,4 +1,3 @@
-import { Capacitor } from '@capacitor/core';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
@@ -15,9 +14,11 @@ export const useStripePlugin = (): StripePluginContextType => {
     return useContext(StripePluginContext);
 };
 
-export type StripePluginProviderType = PropsWithChildren<InitializeOptions & {
-    fallback?: ReactNode;
-}>;
+export type StripePluginProviderType = PropsWithChildren<
+    InitializeOptions & {
+        fallback?: ReactNode;
+    }
+>;
 
 export const StripePluginProvider: FC<StripePluginProviderType> = ({ fallback, children, ...initializeOptions }) => {
     const [isApplePayAvailable, setApplePayAvailableStatus] = useState(false);
@@ -27,14 +28,10 @@ export const StripePluginProvider: FC<StripePluginProviderType> = ({ fallback, c
     useEffect(() => {
         async function init() {
             await Stripe.initialize(initializeOptions);
-            switch (Capacitor.getPlatform()) {
-                case 'ios':
-                    setApplePayAvailableStatus(true);
-                    break;
-                case 'android':
-                    setGooglePayAvailableStatus(true);
-                    break;
-            }
+            const isApplePayAvailable = await Stripe.isApplePayAvailable();
+            const isGooglePayAvailable = await Stripe.isGooglePayAvailable();
+            setApplePayAvailableStatus(isApplePayAvailable);
+            setGooglePayAvailableStatus(isGooglePayAvailable);
             setPlugin(Stripe);
         }
 
@@ -45,14 +42,14 @@ export const StripePluginProvider: FC<StripePluginProviderType> = ({ fallback, c
         return <>{fallback}</>;
     }
     return (
-      <StripePluginContext.Provider
-        value={{
-            plugin,
-            isGooglePayAvailable,
-            isApplePayAvailable,
-        }}
-      >
-          {children}
-      </StripePluginContext.Provider>
+        <StripePluginContext.Provider
+            value={{
+                plugin,
+                isGooglePayAvailable,
+                isApplePayAvailable,
+            }}
+        >
+            {children}
+        </StripePluginContext.Provider>
     );
 };

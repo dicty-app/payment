@@ -19,6 +19,7 @@ npx cap sync
 * [`isGooglePayAvailable()`](#isgooglepayavailable)
 * [`handleGooglePay(...)`](#handlegooglepay)
 * [Interfaces](#interfaces)
+* [Enums](#enums)
 
 </docgen-index>
 
@@ -52,12 +53,14 @@ isApplePayAvailable() => Promise<boolean>
 ### handleApplePay(...)
 
 ```typescript
-handleApplePay(opts: ApplePayOptions) => Promise<void>
+handleApplePay(opts: ApplePayOptions) => Promise<ApplePayResult>
 ```
 
 | Param      | Type                                                        |
 | ---------- | ----------------------------------------------------------- |
 | **`opts`** | <code><a href="#applepayoptions">ApplePayOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#applepayresult">ApplePayResult</a>&gt;</code>
 
 --------------------
 
@@ -96,19 +99,26 @@ handleGooglePay(opts: GooglePayOptions) => Promise<void>
 | **`publicKey`** | <code>string</code> |
 
 
+#### ApplePayResult
+
+| Prop         | Type                                                        |
+| ------------ | ----------------------------------------------------------- |
+| **`result`** | <code><a href="#applepayresults">ApplePayResults</a></code> |
+
+
 #### ApplePayOptions
 
-| Prop                     | Type                |
-| ------------------------ | ------------------- |
-| **`clientSecret`**       | <code>string</code> |
-| **`merchantIdentifier`** | <code>string</code> |
-| **`label`**              | <code>string</code> |
-| **`description`**        | <code>string</code> |
-| **`currency`**           | <code>string</code> |
-| **`amount`**             | <code>number</code> |
-| **`billingPeriod`**      | <code>number</code> |
-| **`managementURL`**      | <code>string</code> |
-| **`billingAgreement`**   | <code>string</code> |
+| Prop                     | Type                | Description       |
+| ------------------------ | ------------------- | ----------------- |
+| **`clientSecret`**       | <code>string</code> |                   |
+| **`merchantIdentifier`** | <code>string</code> |                   |
+| **`label`**              | <code>string</code> |                   |
+| **`currency`**           | <code>string</code> |                   |
+| **`amount`**             | <code>number</code> |                   |
+| **`billingPeriod`**      | <code>number</code> |                   |
+| **`description`**        | <code>string</code> | not supported yet |
+| **`managementURL`**      | <code>string</code> | not supported yet |
+| **`billingAgreement`**   | <code>string</code> | not supported yet |
 
 
 #### GooglePayOptions
@@ -118,11 +128,20 @@ handleGooglePay(opts: GooglePayOptions) => Promise<void>
 | **`clientSecret`**       | <code>string</code> |
 | **`merchantIdentifier`** | <code>string</code> |
 | **`label`**              | <code>string</code> |
-| **`description`**        | <code>string</code> |
 | **`currency`**           | <code>string</code> |
 | **`amount`**             | <code>number</code> |
 | **`billingPeriod`**      | <code>number</code> |
-| **`managementURL`**      | <code>string</code> |
-| **`billingAgreement`**   | <code>string</code> |
+
+
+### Enums
+
+
+#### ApplePayResults
+
+| Members         | Value                    |
+| --------------- | ------------------------ |
+| **`Completed`** | <code>'completed'</code> |
+| **`Canceled`**  | <code>'canceled'</code>  |
+| **`Failed`**    | <code>'failed'</code>    |
 
 </docgen-api>
