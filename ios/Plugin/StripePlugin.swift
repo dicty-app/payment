@@ -13,7 +13,11 @@ public class StripePlugin: CAPPlugin, ApplePayContextDelegate {
     private var appleClientSecret: String?
 
     @objc func initialize(_ call: CAPPluginCall) {
-        StripeAPI.defaultPublishableKey = call.getString("publicKey")
+        guard let publicKey = call.options["publicKey"] as? String, !publicKey.isEmpty else {
+            call.reject("Call must provide \"publicKey\"")
+            return
+        }
+        StripeAPI.defaultPublishableKey = publicKey
         STPAPIClient.shared.appInfo = STPAppInfo(name: "@dicty/stripe", partnerId: nil, version: nil, url: nil)
         call.resolve()
     }
