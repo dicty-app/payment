@@ -1,6 +1,6 @@
 {
   "name": "@dicty/stripe",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Dicty Stripe plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -63,7 +63,6 @@
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
     "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
     "eslint": "^7.11.0",
     "prettier": "^2.4.1",
     "prettier-plugin-java": "~1.0.2",
@@ -74,7 +73,7 @@
   },
   "peerDependencies": {
     "@capacitor/core": "^4.0.0",
-    "react": "^18.2.0"
+    "react": "^17.0.2"
   },
   "swiftlint": "@ionic/swiftlint-config",
   "eslintConfig": {
