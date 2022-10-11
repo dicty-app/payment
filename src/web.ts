@@ -15,11 +15,11 @@ export class StripeWeb extends WebPlugin implements StripePlugin {
         return Promise.reject('Not supported');
     }
 
-    isApplePayAvailable(): Promise<boolean> {
+    isApplePayAvailable(): Promise<void> {
         return Promise.reject('Not supported');
     }
 
-    isGooglePayAvailable(): Promise<boolean> {
+    isGooglePayAvailable(): Promise<void> {
         return Promise.reject('Not supported');
     }
 }

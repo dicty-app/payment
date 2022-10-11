@@ -1,11 +1,11 @@
 export interface StripePlugin {
     initialize(opts: InitializeOptions): Promise<void>;
 
-    isApplePayAvailable(): Promise<boolean>;
+    isApplePayAvailable(): Promise<void>;
 
     handleApplePay(opts: ApplePayOptions): Promise<ApplePayResult>;
 
-    isGooglePayAvailable(): Promise<boolean>;
+    isGooglePayAvailable(): Promise<void>;
 
     handleGooglePay(opts: GooglePayOptions): Promise<void>;
 }
