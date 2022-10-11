@@ -29,22 +29,22 @@ export const StripePluginProvider: FC<StripePluginProviderType> = ({ fallback, c
     useEffect(() => {
         async function initialize() {
             await Stripe.initialize(initializeOptions);
+            let applePayAvailable = false;
+            let googlePayAvailable = false;
             try {
                 await Stripe.isApplePayAvailable();
-                setApplePayAvailableStatus(true);
-                console.log('ap available')
+                applePayAvailable = true;
             } catch (e) {
-                console.log('ap not available')
-                setApplePayAvailableStatus(false);
+                applePayAvailable = false;
             }
             try {
                 await Stripe.isGooglePayAvailable();
-                setGooglePayAvailableStatus(true);
-                console.log('gp available')
+                googlePayAvailable = true;
             } catch (e) {
-                setGooglePayAvailableStatus(false);
-                console.log('gp not available')
+                googlePayAvailable = false;
             }
+            setApplePayAvailableStatus(applePayAvailable);
+            setGooglePayAvailableStatus(googlePayAvailable);
             setPlugin(Stripe);
         }
 

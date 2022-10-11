@@ -83,11 +83,11 @@ public class StripePlugin: CAPPlugin, ApplePayContextDelegate {
     }
 
     @objc func isGooglePay(_ call: CAPPluginCall) {
-        call.unavailable("Not implemented on iOS")
+        call.unimplemented("Not implemented on iOS")
     }
 
     @objc func handleGooglePay(_ call: CAPPluginCall) {
-        call.unavailable("Not implemented on iOS")
+        call.unimplemented("Not implemented on iOS")
     }
 }
 
