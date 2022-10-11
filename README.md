@@ -42,10 +42,8 @@ initialize(opts: InitializeOptions) => Promise<void>
 ### isApplePayAvailable()
 
 ```typescript
-isApplePayAvailable() => Promise<boolean>
+isApplePayAvailable() => Promise<void>
 ```
-
-**Returns:** <code>Promise&lt;boolean&gt;</code>
 
 --------------------
 
@@ -68,10 +66,8 @@ handleApplePay(opts: ApplePayOptions) => Promise<ApplePayResult>
 ### isGooglePayAvailable()
 
 ```typescript
-isGooglePayAvailable() => Promise<boolean>
+isGooglePayAvailable() => Promise<void>
 ```
-
-**Returns:** <code>Promise&lt;boolean&gt;</code>
 
 --------------------
 
