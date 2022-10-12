@@ -104,17 +104,18 @@ handleGooglePay(opts: GooglePayOptions) => Promise<void>
 
 #### ApplePayOptions
 
-| Prop                     | Type                | Description       |
-| ------------------------ | ------------------- | ----------------- |
-| **`clientSecret`**       | <code>string</code> |                   |
-| **`merchantIdentifier`** | <code>string</code> |                   |
-| **`label`**              | <code>string</code> |                   |
-| **`currency`**           | <code>string</code> |                   |
-| **`amount`**             | <code>number</code> |                   |
-| **`billingPeriod`**      | <code>number</code> |                   |
-| **`description`**        | <code>string</code> | not supported yet |
-| **`managementURL`**      | <code>string</code> | not supported yet |
-| **`billingAgreement`**   | <code>string</code> | not supported yet |
+| Prop                     | Type                |
+| ------------------------ | ------------------- |
+| **`clientSecret`**       | <code>string</code> |
+| **`merchantIdentifier`** | <code>string</code> |
+| **`label`**              | <code>string</code> |
+| **`countryCode`**        | <code>string</code> |
+| **`currency`**           | <code>string</code> |
+| **`amount`**             | <code>number</code> |
+| **`billingPeriod`**      | <code>number</code> |
+| **`description`**        | <code>string</code> |
+| **`managementURL`**      | <code>string</code> |
+| **`billingAgreement`**   | <code>string</code> |
 
 
 #### GooglePayOptions

@@ -12,7 +12,7 @@ export interface StripePlugin {
 
 export enum ApplePayResults {
     Completed = 'completed',
-    Canceled = 'canceled',
+    Cancelled = 'cancelled',
     Failed = 'failed',
 }
 

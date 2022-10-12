@@ -133,7 +133,7 @@ extension StripePlugin {
                 call.resolve(["result": ApplePayEvents.Failed.rawValue])
                 break
             case .userCancellation:
-                call.resolve(["result": ApplePayEvents.Canceled.rawValue])
+                call.resolve(["result": ApplePayEvents.Cancelled.rawValue])
                 break
             }
         }
