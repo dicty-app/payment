@@ -28,21 +28,13 @@ export interface ApplePayOptions {
     clientSecret: string;
     merchantIdentifier: string;
     label: string;
+    countryCode: string;
     currency: string;
     amount: number;
     billingPeriod: number;
-    /**
-     * not supported yet
-     */
-    description?: string;
-    /**
-     * not supported yet
-     */
-    managementURL?: string;
-    /**
-     * not supported yet
-     */
-    billingAgreement?: string;
+    description: string;
+    managementURL: string;
+    billingAgreement: string;
 }
 
 export interface GooglePayOptions {

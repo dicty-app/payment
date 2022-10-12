@@ -60,6 +60,18 @@ public class StripePlugin: CAPPlugin, ApplePayContextDelegate {
             call.reject("Call must provide \"billingPeriod\"")
             return
         }
+        guard let description = call.options["description"] as? String, !description.isEmpty else {
+            call.reject("Call must provide \"description\"")
+            return
+        }
+        guard let managementURL = call.options["managementURL"] as? String, !managementURL.isEmpty else {
+            call.reject("Call must provide \"managementURL\"")
+            return
+        }
+        guard let billingAgreement = call.options["billingAgreement"] as? String, !billingAgreement.isEmpty else {
+            call.reject("Call must provide \"billingAgreement\"")
+            return
+        }
 
         self.appleClientSecret = appleClientSecret
         let request = StripeAPI.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: countryCode, currency: currency)
@@ -68,6 +80,17 @@ public class StripePlugin: CAPPlugin, ApplePayContextDelegate {
         billing.startDate = Date()
         billing.endDate = Date().addingTimeInterval(billingPeriod)
         billing.intervalUnit = .month
+
+        if #available(iOS 16.0, *) {
+            request.recurringPaymentRequest = PKRecurringPaymentRequest(
+                    paymentDescription: description,
+                    regularBilling: billing,
+                    managementURL: URL(string: managementURL)!
+            )
+            request.recurringPaymentRequest?.billingAgreement = billingAgreement
+        } else {
+            // Fallback on earlier versions
+        }
 
         request.paymentSummaryItems = [billing]
 
