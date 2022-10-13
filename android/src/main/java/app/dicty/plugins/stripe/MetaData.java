@@ -24,10 +24,10 @@ public class MetaData {
                     .getApplicationInfo(contextSupplier.get().getPackageName(), PackageManager.GET_META_DATA);
 
             publicKey = appInfo.metaData.getString("app.dicty.plugins.stripe.public_key");
+            stripeAccount = appInfo.metaData.getString("app.dicty.plugins.stripe.account");
             countryCode = appInfo.metaData.getString("app.dicty.plugins.stripe.merchant_country_code");
             displayName = appInfo.metaData.getString("app.dicty.plugins.stripe.merchant_display_name");
-            stripeAccount = appInfo.metaData.getString("app.dicty.plugins.stripe.stripe_account");
-            env = appInfo.metaData.getBoolean("app.dicty.plugins.stripe.google_pay_is_testing")
+            env = appInfo.metaData.getBoolean("app.dicty.plugins.stripe.debug")
                     ? GooglePayEnvironment.Test
                     : GooglePayEnvironment.Production;
 

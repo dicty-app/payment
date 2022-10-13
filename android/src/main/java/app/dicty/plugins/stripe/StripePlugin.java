@@ -39,11 +39,11 @@ public class StripePlugin extends Plugin {
         payCallId = null;
         if (result instanceof GooglePayLauncher.Result.Completed) {
             // Payment succeeded, show a receipt view
-            call.resolve(new JSObject().put("result", GooglePayEvents.Completed.getWebEventName()));
+            call.resolve(new JSObject().put("result", GooglePayEvents.Completed.toString()));
         } else if (result instanceof GooglePayLauncher.Result.Canceled) {
-            call.resolve(new JSObject().put("result", GooglePayEvents.Cancelled.getWebEventName()));
+            call.resolve(new JSObject().put("result", GooglePayEvents.Cancelled.toString()));
         } else if (result instanceof GooglePayLauncher.Result.Failed) {
-            call.resolve(new JSObject().put("result", GooglePayEvents.Failed.getWebEventName()));
+            call.resolve(new JSObject().put("result", GooglePayEvents.Failed.toString()));
         }
     }
 
