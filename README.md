@@ -75,12 +75,14 @@ isGooglePayAvailable() => Promise<void>
 ### handleGooglePay(...)
 
 ```typescript
-handleGooglePay(opts: GooglePayOptions) => Promise<void>
+handleGooglePay(opts: GooglePayOptions) => Promise<GooglePayResult>
 ```
 
 | Param      | Type                                                          |
 | ---------- | ------------------------------------------------------------- |
 | **`opts`** | <code><a href="#googlepayoptions">GooglePayOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#googlepayresult">GooglePayResult</a>&gt;</code>
 
 --------------------
 
@@ -118,22 +120,33 @@ handleGooglePay(opts: GooglePayOptions) => Promise<void>
 | **`billingAgreement`**   | <code>string</code> |
 
 
+#### GooglePayResult
+
+| Prop         | Type                                                          |
+| ------------ | ------------------------------------------------------------- |
+| **`result`** | <code><a href="#googlepayresults">GooglePayResults</a></code> |
+
+
 #### GooglePayOptions
 
-| Prop                     | Type                |
-| ------------------------ | ------------------- |
-| **`clientSecret`**       | <code>string</code> |
-| **`merchantIdentifier`** | <code>string</code> |
-| **`label`**              | <code>string</code> |
-| **`currency`**           | <code>string</code> |
-| **`amount`**             | <code>number</code> |
-| **`billingPeriod`**      | <code>number</code> |
+| Prop               | Type                |
+| ------------------ | ------------------- |
+| **`clientSecret`** | <code>string</code> |
 
 
 ### Enums
 
 
 #### ApplePayResults
+
+| Members         | Value                    |
+| --------------- | ------------------------ |
+| **`Completed`** | <code>'completed'</code> |
+| **`Cancelled`** | <code>'cancelled'</code> |
+| **`Failed`**    | <code>'failed'</code>    |
+
+
+#### GooglePayResults
 
 | Members         | Value                    |
 | --------------- | ------------------------ |

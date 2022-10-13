@@ -1,6 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { ApplePayResult, StripePlugin } from './definitions';
+import type { ApplePayResult, GooglePayResult, StripePlugin } from './definitions';
 
 export class StripeWeb extends WebPlugin implements StripePlugin {
     async initialize(): Promise<void> {
@@ -11,7 +11,7 @@ export class StripeWeb extends WebPlugin implements StripePlugin {
         return Promise.reject('Not supported');
     }
 
-    handleGooglePay(): Promise<void> {
+    handleGooglePay(): Promise<GooglePayResult> {
         return Promise.reject('Not supported');
     }
 
