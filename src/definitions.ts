@@ -7,10 +7,16 @@ export interface StripePlugin {
 
     isGooglePayAvailable(): Promise<void>;
 
-    handleGooglePay(opts: GooglePayOptions): Promise<void>;
+    handleGooglePay(opts: GooglePayOptions): Promise<GooglePayResult>;
 }
 
 export enum ApplePayResults {
+    Completed = 'completed',
+    Cancelled = 'cancelled',
+    Failed = 'failed',
+}
+
+export enum GooglePayResults {
     Completed = 'completed',
     Cancelled = 'cancelled',
     Failed = 'failed',
@@ -39,11 +45,10 @@ export interface ApplePayOptions {
 
 export interface GooglePayOptions {
     clientSecret: string;
-    merchantIdentifier: string;
-    label: string;
-    currency: string;
-    amount: number;
-    billingPeriod: number;
+}
+
+export interface GooglePayResult {
+    result: GooglePayResults;
 }
 
 export interface StripePluginContext {

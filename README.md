@@ -138,7 +138,7 @@ handleGooglePay(opts: GooglePayOptions) => Promise<void>
 | Members         | Value                    |
 | --------------- | ------------------------ |
 | **`Completed`** | <code>'completed'</code> |
-| **`Canceled`**  | <code>'canceled'</code>  |
+| **`Cancelled`** | <code>'cancelled'</code> |
 | **`Failed`**    | <code>'failed'</code>    |
 
 </docgen-api>
