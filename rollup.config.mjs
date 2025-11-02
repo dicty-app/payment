@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorStripe',
+      name: 'capacitorPayment',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },

@@ -4,9 +4,21 @@ import PassKit
 import StoreKit
 
 @objc(PaymentPlugin)
-public class PaymentPlugin: CAPPlugin, SKProductsRequestDelegate {
+public class PaymentPlugin: CAPPlugin, CAPBridgedPlugin, SKProductsRequestDelegate {
+    public let identifier = "PaymentPlugin"
+    public let jsName = "Payment"
     private var delayedCallId: String?
     private var productsRequest: SKProductsRequest?
+
+    public let pluginMethods: [CAPPluginMethod] = [
+           CAPPluginMethod(name: "isAppleInAppPurchaseAvailable", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "getAppleInAppPurchaseProducts", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "buyAppleInAppPurchase", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "restoreAppleInAppPurchase", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "getAppleInAppPurchaseReceipt", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "isGooglePayAvailable", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "handleGooglePay", CAPPluginReturnPromise);
+    ]
 
     override public func load() {
         super.load()
