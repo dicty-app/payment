@@ -1,25 +1,43 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { ApplePayResult, GooglePayResult, StripePlugin } from './definitions';
+import {
+    BuyAppleInAppPurchaseOptions,
+    BuyAppleInAppPurchaseResult,
+    GetAppleInAppPurchaseProductsOptions,
+    GetAppleInAppPurchaseProductsResult,
+    GetAppleInAppPurchaseReceiptResult,
+    GooglePayOptions,
+    GooglePayResult,
+    PaymentPlugin,
+    RestoreAppleInAppPurchaseResult,
+} from './definitions';
 
-export class StripeWeb extends WebPlugin implements StripePlugin {
-    async initialize(): Promise<void> {
-        return Promise.resolve(undefined);
-    }
-
-    handleApplePay(): Promise<ApplePayResult> {
+export class PaymentWeb extends WebPlugin implements PaymentPlugin {
+    /**
+     * Apple
+     */
+    isAppleInAppPurchaseAvailable(): Promise<void> {
         return Promise.reject('Not supported');
     }
-
-    handleGooglePay(): Promise<GooglePayResult> {
+    getAppleInAppPurchaseProducts(_opts: GetAppleInAppPurchaseProductsOptions): Promise<GetAppleInAppPurchaseProductsResult> {
         return Promise.reject('Not supported');
     }
-
-    isApplePayAvailable(): Promise<void> {
+    buyAppleInAppPurchase(_opts: BuyAppleInAppPurchaseOptions): Promise<BuyAppleInAppPurchaseResult> {
         return Promise.reject('Not supported');
     }
-
+    restoreAppleInAppPurchase(): Promise<RestoreAppleInAppPurchaseResult> {
+        return Promise.reject('Not supported');
+    }
+    getAppleInAppPurchaseReceipt(): Promise<GetAppleInAppPurchaseReceiptResult> {
+        return Promise.reject('Not supported');
+    }
+    /**
+     * Google
+     */
     isGooglePayAvailable(): Promise<void> {
+        return Promise.reject('Not supported');
+    }
+    handleGooglePay(_opts: GooglePayOptions): Promise<GooglePayResult> {
         return Promise.reject('Not supported');
     }
 }

@@ -1,4 +1,4 @@
-package app.dicty.plugins.stripe;
+package app.dicty.plugins.payment;
 
 import androidx.annotation.NonNull;
 

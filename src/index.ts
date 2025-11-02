@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { StripePlugin } from './definitions';
+import type { PaymentPlugin } from './definitions';
 
-const Stripe = registerPlugin<StripePlugin>('Stripe', {
-    web: () => import('./web').then((m) => new m.StripeWeb()),
+const Payment = registerPlugin<PaymentPlugin>('Payment', {
+    web: () => import('./web').then((m) => new m.PaymentWeb()),
 });
 
 export * from './definitions';
-export { Stripe };
+export { Payment };

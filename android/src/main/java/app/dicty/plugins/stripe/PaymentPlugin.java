@@ -1,4 +1,4 @@
-package app.dicty.plugins.stripe;
+package app.dicty.plugins.payment;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -10,8 +10,8 @@ import com.stripe.android.googlepaylauncher.GooglePayLauncher;
 
 import org.jetbrains.annotations.NotNull;
 
-@CapacitorPlugin(name = "Stripe")
-public class StripePlugin extends Plugin {
+@CapacitorPlugin(name = "Payment")
+public class PaymentPlugin extends Plugin {
     private GooglePayLauncher googlePayLauncher;
     private boolean isAvailable;
     private String payCallId;
@@ -29,16 +29,9 @@ public class StripePlugin extends Plugin {
         );
     }
 
-    @PluginMethod
-    public void initialize(final PluginCall call) {
-        call.resolve();
-    }
-
     private void onGooglePayResult(@NotNull GooglePayLauncher.Result result) {
         PluginCall call = bridge.getSavedCall(payCallId);
-        payCallId = null;
         if (result instanceof GooglePayLauncher.Result.Completed) {
-            // Payment succeeded, show a receipt view
             call.resolve(new JSObject().put("result", GooglePayEvents.Completed.toString()));
         } else if (result instanceof GooglePayLauncher.Result.Canceled) {
             call.resolve(new JSObject().put("result", GooglePayEvents.Cancelled.toString()));
@@ -68,16 +61,30 @@ public class StripePlugin extends Plugin {
         payCallId = call.getCallbackId();
         bridge.saveCall(call);
         googlePayLauncher.presentForPaymentIntent(clientSecret);
-        call.resolve();
     }
 
     @PluginMethod
-    public void isApplePayAvailable(final PluginCall call) {
+    public void isAppleInAppPurchaseAvailable(final PluginCall call) {
         call.unavailable("Not implemented on Android");
     }
 
     @PluginMethod
-    public void handleApplePay(final PluginCall call) {
+    public void getAppleInAppPurchaseProducts(final PluginCall call) {
+        call.unavailable("Not implemented on Android");
+    }
+
+    @PluginMethod
+    public void buyAppleInAppPurchase(final PluginCall call) {
+        call.unavailable("Not implemented on Android");
+    }
+
+    @PluginMethod
+    public void restoreAppleInAppPurchase(final PluginCall call) {
+        call.unavailable("Not implemented on Android");
+    }
+
+    @PluginMethod
+    public void getAppleInAppPurchaseReceipt(final PluginCall call) {
         call.unavailable("Not implemented on Android");
     }
 }

@@ -1,4 +1,4 @@
-package app.dicty.plugins.stripe;
+package app.dicty.plugins.payment;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -23,11 +23,11 @@ public class MetaData {
                     .getPackageManager()
                     .getApplicationInfo(contextSupplier.get().getPackageName(), PackageManager.GET_META_DATA);
 
-            publicKey = appInfo.metaData.getString("app.dicty.plugins.stripe.public_key");
-            stripeAccount = appInfo.metaData.getString("app.dicty.plugins.stripe.account");
-            countryCode = appInfo.metaData.getString("app.dicty.plugins.stripe.merchant_country_code");
-            displayName = appInfo.metaData.getString("app.dicty.plugins.stripe.merchant_display_name");
-            env = appInfo.metaData.getBoolean("app.dicty.plugins.stripe.debug")
+            publicKey = appInfo.metaData.getString("app.dicty.plugins.payment.public_key");
+            stripeAccount = appInfo.metaData.getString("app.dicty.plugins.payment.account");
+            countryCode = appInfo.metaData.getString("app.dicty.plugins.payment.merchant_country_code");
+            displayName = appInfo.metaData.getString("app.dicty.plugins.payment.merchant_display_name");
+            env = appInfo.metaData.getBoolean("app.dicty.plugins.payment.debug")
                     ? GooglePayEnvironment.Test
                     : GooglePayEnvironment.Production;
 

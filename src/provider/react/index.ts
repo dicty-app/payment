@@ -1,1 +1,1 @@
-export { useStripePlugin, StripePluginProvider } from './StripePluginProvider';
+export { usePaymentPlugin, PaymentPluginProvider } from './PaymentPluginProvider';
