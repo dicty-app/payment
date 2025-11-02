@@ -1,12 +1,39 @@
-export declare type PaymentPlugin = {
+export interface PaymentPlugin {
+    /**
+     * Check if Apple In-App Purchases are available on this device
+     */
     isAppleInAppPurchaseAvailable(): Promise<void>;
+    
+    /**
+     * Get Apple In-App Purchase products by their identifiers
+     */
     getAppleInAppPurchaseProducts(opts: GetAppleInAppPurchaseProductsOptions): Promise<GetAppleInAppPurchaseProductsResult>;
+    
+    /**
+     * Purchase an Apple In-App Purchase product
+     */
     buyAppleInAppPurchase(opts: BuyAppleInAppPurchaseOptions): Promise<BuyAppleInAppPurchaseResult>;
+    
+    /**
+     * Restore Apple In-App Purchase transactions
+     */
     restoreAppleInAppPurchase(): Promise<RestoreAppleInAppPurchaseResult>;
+    
+    /**
+     * Get Apple In-App Purchase receipt data
+     */
     getAppleInAppPurchaseReceipt(): Promise<GetAppleInAppPurchaseReceiptResult>;
+    
+    /**
+     * Check if Google Pay is available on this device
+     */
     isGooglePayAvailable(): Promise<void>;
+    
+    /**
+     * Handle Google Pay payment flow
+     */
     handleGooglePay(opts: GooglePayOptions): Promise<GooglePayResult>;
-};
+}
 export declare enum AppleInAppPurchaseStatus {
     Completed = 'completed',
     Restored = 'restored',

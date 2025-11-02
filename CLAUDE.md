@@ -15,7 +15,7 @@ This is a Capacitor plugin called `@dicty/payment` that provides payment functio
 - `npm run build` - Clean, generate docs, compile TypeScript, and bundle with Rollup
 - `npm run clean` - Remove dist directory
 - `npm run watch` - Watch TypeScript files for changes
-- `npm run docgen` - Generate API documentation
+- `npm run docgen` - Generate API documentation (requires JSDoc comments on PaymentPlugin interface)
 
 ### Code Quality
 - `npm run lint` - Run ESLint, Prettier check, and SwiftLint

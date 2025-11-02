@@ -13,12 +13,14 @@ npx cap sync
 
 <docgen-index>
 
-* [`initialize(...)`](#initialize)
-* [`isApplePayAvailable()`](#isapplepayavailable)
-* [`handleApplePay(...)`](#handleapplepay)
+* [`isAppleInAppPurchaseAvailable()`](#isappleinapppurchaseavailable)
+* [`getAppleInAppPurchaseProducts(...)`](#getappleinapppurchaseproducts)
+* [`buyAppleInAppPurchase(...)`](#buyappleinapppurchase)
+* [`restoreAppleInAppPurchase()`](#restoreappleinapppurchase)
+* [`getAppleInAppPurchaseReceipt()`](#getappleinapppurchasereceipt)
 * [`isGooglePayAvailable()`](#isgooglepayavailable)
 * [`handleGooglePay(...)`](#handlegooglepay)
-* [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 * [Enums](#enums)
 
 </docgen-index>
@@ -26,39 +28,73 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### initialize(...)
+### isAppleInAppPurchaseAvailable()
 
 ```typescript
-initialize(opts: InitializeOptions) => Promise<void>
+isAppleInAppPurchaseAvailable() => Promise<void>
 ```
 
-| Param      | Type                                                            |
-| ---------- | --------------------------------------------------------------- |
-| **`opts`** | <code><a href="#initializeoptions">InitializeOptions</a></code> |
+Check if Apple In-App Purchases are available on this device
 
 --------------------
 
 
-### isApplePayAvailable()
+### getAppleInAppPurchaseProducts(...)
 
 ```typescript
-isApplePayAvailable() => Promise<void>
+getAppleInAppPurchaseProducts(opts: GetAppleInAppPurchaseProductsOptions) => Promise<GetAppleInAppPurchaseProductsResult>
 ```
+
+Get Apple In-App Purchase products by their identifiers
+
+| Param      | Type                                                                                                  |
+| ---------- | ----------------------------------------------------------------------------------------------------- |
+| **`opts`** | <code><a href="#getappleinapppurchaseproductsoptions">GetAppleInAppPurchaseProductsOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#getappleinapppurchaseproductsresult">GetAppleInAppPurchaseProductsResult</a>&gt;</code>
 
 --------------------
 
 
-### handleApplePay(...)
+### buyAppleInAppPurchase(...)
 
 ```typescript
-handleApplePay(opts: ApplePayOptions) => Promise<ApplePayResult>
+buyAppleInAppPurchase(opts: BuyAppleInAppPurchaseOptions) => Promise<BuyAppleInAppPurchaseResult>
 ```
 
-| Param      | Type                                                        |
-| ---------- | ----------------------------------------------------------- |
-| **`opts`** | <code><a href="#applepayoptions">ApplePayOptions</a></code> |
+Purchase an Apple In-App Purchase product
 
-**Returns:** <code>Promise&lt;<a href="#applepayresult">ApplePayResult</a>&gt;</code>
+| Param      | Type                                                                                  |
+| ---------- | ------------------------------------------------------------------------------------- |
+| **`opts`** | <code><a href="#buyappleinapppurchaseoptions">BuyAppleInAppPurchaseOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#buyappleinapppurchaseresult">BuyAppleInAppPurchaseResult</a>&gt;</code>
+
+--------------------
+
+
+### restoreAppleInAppPurchase()
+
+```typescript
+restoreAppleInAppPurchase() => Promise<RestoreAppleInAppPurchaseResult>
+```
+
+Restore Apple In-App Purchase transactions
+
+**Returns:** <code>Promise&lt;<a href="#buyappleinapppurchaseresult">BuyAppleInAppPurchaseResult</a>&gt;</code>
+
+--------------------
+
+
+### getAppleInAppPurchaseReceipt()
+
+```typescript
+getAppleInAppPurchaseReceipt() => Promise<GetAppleInAppPurchaseReceiptResult>
+```
+
+Get Apple In-App Purchase receipt data
+
+**Returns:** <code>Promise&lt;<a href="#getappleinapppurchasereceiptresult">GetAppleInAppPurchaseReceiptResult</a>&gt;</code>
 
 --------------------
 
@@ -69,6 +105,8 @@ handleApplePay(opts: ApplePayOptions) => Promise<ApplePayResult>
 isGooglePayAvailable() => Promise<void>
 ```
 
+Check if Google Pay is available on this device
+
 --------------------
 
 
@@ -77,6 +115,8 @@ isGooglePayAvailable() => Promise<void>
 ```typescript
 handleGooglePay(opts: GooglePayOptions) => Promise<GooglePayResult>
 ```
+
+Handle Google Pay payment flow
 
 | Param      | Type                                                          |
 | ---------- | ------------------------------------------------------------- |
@@ -87,61 +127,114 @@ handleGooglePay(opts: GooglePayOptions) => Promise<GooglePayResult>
 --------------------
 
 
-### Interfaces
+### Type Aliases
 
 
-#### InitializeOptions
+#### GetAppleInAppPurchaseProductsResult
 
-| Prop            | Type                |
-| --------------- | ------------------- |
-| **`publicKey`** | <code>string</code> |
+<code>{ products: AppleInAppPurchaseProduct[]; }</code>
 
 
-#### ApplePayResult
+#### AppleInAppPurchaseProduct
 
-| Prop         | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
-| **`result`** | <code><a href="#applepayresults">ApplePayResults</a></code> |
+<code>{ id: string; title: string; description: string; price: number; localizedPrice: string; subscriptionPeriod?: { value: number; unit: <a href="#applesubscriptionperiodunit">AppleSubscriptionPeriodUnit</a>; }; }</code>
 
 
-#### ApplePayOptions
+#### GetAppleInAppPurchaseProductsOptions
 
-| Prop                     | Type                |
-| ------------------------ | ------------------- |
-| **`clientSecret`**       | <code>string</code> |
-| **`merchantIdentifier`** | <code>string</code> |
-| **`label`**              | <code>string</code> |
-| **`countryCode`**        | <code>string</code> |
-| **`currency`**           | <code>string</code> |
-| **`amount`**             | <code>number</code> |
-| **`billingPeriod`**      | <code>number</code> |
-| **`description`**        | <code>string</code> |
-| **`managementURL`**      | <code>string</code> |
-| **`billingAgreement`**   | <code>string</code> |
+<code>{ id: string[]; }</code>
+
+
+#### BuyAppleInAppPurchaseResult
+
+<code><a href="#completedappleinapppurchaseresult">CompletedAppleInAppPurchaseResult</a> | <a href="#restoredappleinapppurchaseresult">RestoredAppleInAppPurchaseResult</a> | <a href="#failedappleinapppurchaseresult">FailedAppleInAppPurchaseResult</a> | <a href="#cancelledappleinapppurchaseresult">CancelledAppleInAppPurchaseResult</a></code>
+
+
+#### CompletedAppleInAppPurchaseResult
+
+<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Completed</a>; productIdentifier: string; transactionIdentifier: string; }</code>
+
+
+#### RestoredAppleInAppPurchaseResult
+
+<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Restored</a>; } & <a href="#omit">Omit</a>&lt;<a href="#completedappleinapppurchaseresult">CompletedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
+
+
+#### Omit
+
+Construct a type with the properties of T except for those in type K.
+
+<code><a href="#pick">Pick</a>&lt;T, <a href="#exclude">Exclude</a>&lt;keyof T, K&gt;&gt;</code>
+
+
+#### Pick
+
+From T, pick a set of properties whose keys are in the union K
+
+<code>{ [P in K]: T[P]; }</code>
+
+
+#### Exclude
+
+<a href="#exclude">Exclude</a> from T those types that are assignable to U
+
+<code>T extends U ? never : T</code>
+
+
+#### FailedAppleInAppPurchaseResult
+
+<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Failed</a>; productIdentifier?: string; transactionIdentifier?: string; }</code>
+
+
+#### CancelledAppleInAppPurchaseResult
+
+<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Cancelled</a>; } & <a href="#omit">Omit</a>&lt;<a href="#failedappleinapppurchaseresult">FailedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
+
+
+#### BuyAppleInAppPurchaseOptions
+
+<code>{ id: string; }</code>
+
+
+#### RestoreAppleInAppPurchaseResult
+
+<code><a href="#buyappleinapppurchaseresult">BuyAppleInAppPurchaseResult</a></code>
+
+
+#### GetAppleInAppPurchaseReceiptResult
+
+<code>{ receiptData: string; }</code>
 
 
 #### GooglePayResult
 
-| Prop         | Type                                                          |
-| ------------ | ------------------------------------------------------------- |
-| **`result`** | <code><a href="#googlepayresults">GooglePayResults</a></code> |
+<code>{ result: <a href="#googlepayresults">GooglePayResults</a>; }</code>
 
 
 #### GooglePayOptions
 
-| Prop               | Type                |
-| ------------------ | ------------------- |
-| **`clientSecret`** | <code>string</code> |
+<code>{ clientSecret: string; }</code>
 
 
 ### Enums
 
 
-#### ApplePayResults
+#### AppleSubscriptionPeriodUnit
+
+| Members     | Value          |
+| ----------- | -------------- |
+| **`Day`**   | <code>0</code> |
+| **`Week`**  | <code>1</code> |
+| **`Month`** | <code>2</code> |
+| **`Year`**  | <code>3</code> |
+
+
+#### AppleInAppPurchaseStatus
 
 | Members         | Value                    |
 | --------------- | ------------------------ |
 | **`Completed`** | <code>'completed'</code> |
+| **`Restored`**  | <code>'restored'</code>  |
 | **`Cancelled`** | <code>'cancelled'</code> |
 | **`Failed`**    | <code>'failed'</code>    |
 
@@ -151,7 +244,6 @@ handleGooglePay(opts: GooglePayOptions) => Promise<GooglePayResult>
 | Members         | Value                    |
 | --------------- | ------------------------ |
 | **`Completed`** | <code>'completed'</code> |
-| **`Cancelled`** | <code>'cancelled'</code> |
 | **`Failed`**    | <code>'failed'</code>    |
 
 </docgen-api>
