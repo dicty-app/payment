@@ -1,7 +1,7 @@
 {
   "name": "@dicty/payment",
   "version": "2.0.0",
-  "description": "Dicty Stripe plugin",
+  "description": "Dicty Payment plugin",
   "type": "module",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,28 +11,19 @@
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "ios/Sources/PaymentPlugin/",
+    "ios/Sources",
+    "ios/Tests",
+    "Package.swift",
     "DictyPayment.podspec"
   ],
   "author": "Dicty",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wtorsi/stripe.git"
+    "url": "git+https://github.com/dicty-app/payment.git"
   },
   "bugs": {
-    "url": "https://github.com/wtorsi/stripe/issues"
-  },
-  "exports": {
-    ".": {
-      "type": "./dist/esm/index.d.ts",
-      "import": "./dist/esm/index.js"
-    },
-    "./react": {
-      "type": "./dist/esm/provider/react/PaymentPluginProvider.d.ts",
-      "import": "./dist/esm/provider/react/PaymentPluginProvider.js"
-    },
-    "./*": "./*"
+    "url": "https://github.com/dicty-app/payment/issues"
   },
   "keywords": [
     "capacitor",
@@ -75,9 +66,10 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.4",
+    "@capacitor/core": ">=7.0.0",
     "react": "^19.2.0"
   },
+  "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
   "eslintConfig": {
     "extends": "@ionic/eslint-config/recommended"
