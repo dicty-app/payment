@@ -11,13 +11,13 @@ public class PaymentPlugin: CAPPlugin, CAPBridgedPlugin, SKProductsRequestDelega
     private var productsRequest: SKProductsRequest?
 
     public let pluginMethods: [CAPPluginMethod] = [
-           CAPPluginMethod(name: "isAppleInAppPurchaseAvailable", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "getAppleInAppPurchaseProducts", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "buyAppleInAppPurchase", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "restoreAppleInAppPurchase", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "getAppleInAppPurchaseReceipt", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "isGooglePayAvailable", CAPPluginReturnPromise);
-           CAPPluginMethod(name: "handleGooglePay", CAPPluginReturnPromise);
+           CAPPluginMethod(name: "isAppleInAppPurchaseAvailable", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "getAppleInAppPurchaseProducts", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "buyAppleInAppPurchase", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "restoreAppleInAppPurchase", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "getAppleInAppPurchaseReceipt", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "isGooglePayAvailable", returnType: CAPPluginReturnPromise),
+           CAPPluginMethod(name: "handleGooglePay", returnType: CAPPluginReturnPromise)
     ]
 
     override public func load() {

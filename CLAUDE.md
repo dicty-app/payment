@@ -30,6 +30,15 @@ This is a Capacitor plugin called `@dicty/payment` that provides payment functio
 - `npm run verify:android` - Build and test Android (`cd android && ./gradlew clean build test`)
 - `npm run verify:web` - Verify web build (`npm run build`)
 
+**Note**: Android verification requires Java 21 or lower. With Java 24+ (major versions 68+), you will encounter "Unsupported class file major version" errors despite using updated Gradle versions. 
+
+**Solutions**:
+- Install Java 21: `brew install openjdk@21`
+- Run with Java 21: `JAVA_HOME=/usr/local/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home npm run verify:android`
+- Or use jenv to manage multiple Java versions
+
+The plugin code itself is valid - this is purely a toolchain compatibility issue.
+
 ## Architecture
 
 ### TypeScript/JavaScript Layer
