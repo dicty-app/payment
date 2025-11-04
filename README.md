@@ -1,13 +1,45 @@
-# @dicty/stripe
+# @dicty/payment
 
-Dicty Stripe plugin
+Dicty Payment Plugin for Capacitor apps
 
-## Install
+## Overview
+
+`@dicty/payment` bridges Capacitor projects to native Apple in-app purchases and Google Pay flows. It ships with TypeScript definitions, a React context provider, and native shims for iOS, Android, and the web fallback.
+
+## Installation
 
 ```bash
-npm install @dicty/stripe
+npm install @dicty/payment
 npx cap sync
 ```
+
+After syncing, open Android Studio/Xcode to let Gradle/CocoaPods refresh native dependencies.
+
+## Usage
+
+```ts
+import { Payment } from '@dicty/payment';
+
+const available = await Payment.isAppleInAppPurchaseAvailable();
+if (available) {
+  const { products } = await Payment.getAppleInAppPurchaseProducts({ id: ['premium_monthly'] });
+  await Payment.buyAppleInAppPurchase({ id: products[0].id });
+}
+```
+
+For React apps, wrap your tree with the provider:
+
+```tsx
+import { PaymentPluginProvider } from '@dicty/payment/react';
+
+<PaymentPluginProvider>{children}</PaymentPluginProvider>;
+```
+
+## Development
+
+- `npm run build` cleans, regenerates docs, compiles TypeScript, and bundles output via Rollup.
+- `npm run verify` runs iOS, Android, and web checks; execute before publishing changes.
+- `npm run fmt` formats TypeScript, Java, and Swift sources; `npm run lint` performs the read-only equivalent.
 
 ## API
 
@@ -171,7 +203,9 @@ Construct a type with the properties of T except for those in type K.
 
 From T, pick a set of properties whose keys are in the union K
 
-<code>{ [P in K]: T[P]; }</code>
+<code>{
+ [P in K]: T[P];
+ }</code>
 
 
 #### Exclude
