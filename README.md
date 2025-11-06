@@ -53,7 +53,6 @@ import { PaymentPluginProvider } from '@dicty/payment/react';
 * [`isGooglePayAvailable()`](#isgooglepayavailable)
 * [`handleGooglePay(...)`](#handlegooglepay)
 * [Type Aliases](#type-aliases)
-* [Enums](#enums)
 
 </docgen-index>
 
@@ -172,6 +171,11 @@ Handle Google Pay payment flow
 <code>{ id: string; title: string; description: string; price: number; localizedPrice: string; subscriptionPeriod?: { value: number; unit: <a href="#applesubscriptionperiodunit">AppleSubscriptionPeriodUnit</a>; }; }</code>
 
 
+#### AppleSubscriptionPeriodUnit
+
+<code>(typeof <a href="#applesubscriptionperiodunit">AppleSubscriptionPeriodUnit</a>)[keyof typeof AppleSubscriptionPeriodUnit]</code>
+
+
 #### GetAppleInAppPurchaseProductsOptions
 
 <code>{ id: string[]; }</code>
@@ -184,12 +188,12 @@ Handle Google Pay payment flow
 
 #### CompletedAppleInAppPurchaseResult
 
-<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Completed</a>; productIdentifier: string; transactionIdentifier: string; }</code>
+<code>{ status: typeof AppleInAppPurchaseStatus.Completed; productIdentifier: string; transactionIdentifier: string; }</code>
 
 
 #### RestoredAppleInAppPurchaseResult
 
-<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Restored</a>; } & <a href="#omit">Omit</a>&lt;<a href="#completedappleinapppurchaseresult">CompletedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
+<code>{ status: typeof AppleInAppPurchaseStatus.Restored; } & <a href="#omit">Omit</a>&lt;<a href="#completedappleinapppurchaseresult">CompletedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
 
 
 #### Omit
@@ -215,12 +219,12 @@ From T, pick a set of properties whose keys are in the union K
 
 #### FailedAppleInAppPurchaseResult
 
-<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Failed</a>; productIdentifier?: string; transactionIdentifier?: string; }</code>
+<code>{ status: typeof AppleInAppPurchaseStatus.Failed; productIdentifier?: string; transactionIdentifier?: string; }</code>
 
 
 #### CancelledAppleInAppPurchaseResult
 
-<code>{ status: <a href="#appleinapppurchasestatus">AppleInAppPurchaseStatus.Cancelled</a>; } & <a href="#omit">Omit</a>&lt;<a href="#failedappleinapppurchaseresult">FailedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
+<code>{ status: typeof AppleInAppPurchaseStatus.Cancelled; } & <a href="#omit">Omit</a>&lt;<a href="#failedappleinapppurchaseresult">FailedAppleInAppPurchaseResult</a>, 'status'&gt;</code>
 
 
 #### BuyAppleInAppPurchaseOptions
@@ -243,39 +247,13 @@ From T, pick a set of properties whose keys are in the union K
 <code>{ result: <a href="#googlepayresults">GooglePayResults</a>; }</code>
 
 
+#### GooglePayResults
+
+<code>(typeof <a href="#googlepayresults">GooglePayResults</a>)[keyof typeof GooglePayResults]</code>
+
+
 #### GooglePayOptions
 
 <code>{ clientSecret: string; }</code>
-
-
-### Enums
-
-
-#### AppleSubscriptionPeriodUnit
-
-| Members     | Value          |
-| ----------- | -------------- |
-| **`Day`**   | <code>0</code> |
-| **`Week`**  | <code>1</code> |
-| **`Month`** | <code>2</code> |
-| **`Year`**  | <code>3</code> |
-
-
-#### AppleInAppPurchaseStatus
-
-| Members         | Value                    |
-| --------------- | ------------------------ |
-| **`Completed`** | <code>'completed'</code> |
-| **`Restored`**  | <code>'restored'</code>  |
-| **`Cancelled`** | <code>'cancelled'</code> |
-| **`Failed`**    | <code>'failed'</code>    |
-
-
-#### GooglePayResults
-
-| Members         | Value                    |
-| --------------- | ------------------------ |
-| **`Completed`** | <code>'completed'</code> |
-| **`Failed`**    | <code>'failed'</code>    |
 
 </docgen-api>
