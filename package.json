@@ -1,7 +1,6 @@
 {
-  "name": "@dicty/payment",
-  "version": "0.0.1",
-  "description": "Dicty Payment Plugin for Capacitor apps",
+  "version": "2.0.7",
+  "description": "Dicty Payment plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -53,6 +52,7 @@
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
+    "@types/react": "^19.2.7",
     "eslint": "^8.57.1",
     "prettier": "^3.6.2",
     "prettier-plugin-java": "^2.7.7",
