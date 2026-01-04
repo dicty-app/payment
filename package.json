@@ -1,5 +1,5 @@
 {
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Dicty Payment plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
